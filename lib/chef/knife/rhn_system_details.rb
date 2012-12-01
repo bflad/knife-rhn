@@ -29,7 +29,6 @@ module RhnKnifePlugin
       satellite_system = get_satellite_system(system)
 
       details = RhnSatellite::System.details(satellite_system['id'])
-
       ui.info "#{ui.color "ID", :cyan}: #{details['id']}"
       ui.info "#{ui.color "Profile Name", :cyan}: #{details['profile_name']}"
       ui.info "#{ui.color "Hostname", :cyan}: #{details['hostname']}"
@@ -40,6 +39,21 @@ module RhnKnifePlugin
       ui.info "#{ui.color "Description", :cyan}:"
       ui.info "#{details['description']}"
 
+      base_channel = RhnSatellite::System.subscribed_base_channel(satellite_system['id'])
+      child_channels = RhnSatellite::System.subscribed_child_channels(satellite_system['id'])
+      ui.info "#{ui.color "Subscribed Channels", :cyan}:"
+      ui.info "#{ui.color base_channel['name'], :bold}"
+      child_channels.each do |child_channel|
+        ui.info " |_ #{child_channel['name']}"
+      end
+
+      relevant_erratas = RhnSatellite::System.relevant_erratas(satellite_system['id'])
+      critical_errata = relevant_erratas.select{|e| e["advisory_type"] == "Security Advisory"}.length
+      ui.info "#{ui.color "Critical Errata", :cyan}: #{critical_errata}"
+      ui.info "#{ui.color "Non-Critical Errata", :cyan}: #{relevant_erratas.length - critical_errata}"
+
+      upgradable_packages = RhnSatellite::System.latest_upgradable_packages(satellite_system['id'])
+      ui.info "#{ui.color "Upgradable Packages", :cyan}: #{upgradable_packages.length}"
     end
 
   end
