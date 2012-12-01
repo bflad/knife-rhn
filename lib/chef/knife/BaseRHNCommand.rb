@@ -58,9 +58,6 @@ module RhnKnifePlugin
     end
 
     def get_satellite_system(system)
-      # See: https://github.com/duritong/ruby-rhn_satellite/issues/3
-      RhnSatellite::System.https = false if get_config(:rhn_no_https)
-
       satellite_system = RhnSatellite::System.get(system)
 
       if satellite_system.nil?
@@ -75,6 +72,16 @@ module RhnKnifePlugin
       RhnSatellite::Connection::Handler.debug_enabled = true if get_config(:rhn_debug)
       RhnSatellite::Connection::Handler.default_hostname = get_config(:rhn_hostname)
       RhnSatellite::Connection::Handler.default_https = false if get_config(:rhn_no_https)
+      # See: https://github.com/duritong/ruby-rhn_satellite/issues/3
+      RhnSatellite::ActivationKey.https = false if get_config(:rhn_no_https)
+      RhnSatellite::Api.https = false if get_config(:rhn_no_https)
+      RhnSatellite::Channel.https = false if get_config(:rhn_no_https)
+      RhnSatellite::ChannelAccess.https = false if get_config(:rhn_no_https)
+      RhnSatellite::ChannelSoftware.https = false if get_config(:rhn_no_https)
+      RhnSatellite::Packages.https = false if get_config(:rhn_no_https)
+      RhnSatellite::System.https = false if get_config(:rhn_no_https)
+      RhnSatellite::Systemgroup.https = false if get_config(:rhn_no_https)
+      # End of issue 3 workaround
       RhnSatellite::Connection::Handler.default_timeout = get_config(:rhn_timeout)
       RhnSatellite::Connection::Handler.default_username = get_config(:rhn_username)
       password = get_config(:rhn_password)
