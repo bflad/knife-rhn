@@ -98,14 +98,14 @@ Deletes systemgroup GROUP.
 
 ### `knife rhn systemgroup inactive GROUP`
 
-Lists inactive systems in system group GROUP.
+Lists inactive systems (systems that have not checked into RHN in 24 hours) in systemgroup GROUP.
+
+* `--days DAYS` - optionally set number of inactive days
 
 Example output:
 
     1000010004,server4.example.com
     1000017215,server5.example.com
-
-* `--days` - Number of inactive days
 
 ### `knife rhn systemgroup list`
 
