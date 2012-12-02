@@ -1,6 +1,6 @@
 # Knife RHN
 
-A knife plugin for managing RHN.
+A knife plugin for managing Red Hat Network.
 
 ## Installation
 
