@@ -14,5 +14,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "knife-rhn"
   gem.require_paths = ["lib"]
-  gem.version       = Knife::RHN::VERSION
+  gem.version       = Knife::Rhn::VERSION
 end
