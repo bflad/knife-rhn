@@ -36,6 +36,30 @@ Deletes the system profile for SYSTEM.
 
 Displays system details for SYSTEM.
 
+Example output:
+
+    ID: 1000023160
+    Profile Name: bflad-test2
+    Hostname: bflad-test2
+    Release: 6Server
+    Auto Update: Disabled
+    Locked: Disabled
+    RHN URL: https://example.com/rhn/systems/details/Overview.do?sid=1000023160
+    Description:
+    Initial Registration Parameters:
+    OS: redhat-release-server
+    Release: 6Server
+    CPU Arch: x86_64
+    Subscribed Channels:
+    Red Hat Enterprise Linux Server (v. 6 for 64-bit x86_64)
+     |_ Shibboleth RHEL 6 x86_64
+     |_ RHEL Server Optional (v. 6 64-bit x86_64)
+     |_ RHEL Server Supplementary (v. 6 64-bit x86_64)
+     |_ EPEL 6 Server x86_64
+    Critical Errata: 1
+    Non-Critical Errata: 2
+    Upgradable Packages: 4
+
 ### `knife rhn system move SYSTEM GROUP`
 
 * Removes system SYSTEM from all current systemgroups.
@@ -45,9 +69,20 @@ Displays system details for SYSTEM.
 
 Displays systemgroups for SYSTEM.
 
+Example output:
+
+    Core Systems
+    Research Computing
+
 ### `knife rhn systemgroup active GROUP`
 
-Lists active systems in system group GROUP.
+Lists active systems (systems that have checked into RHN in the last 24 hours) in systemgroup GROUP.
+
+Example output:
+
+    1000010619,server1.example.com
+    1000018560,server2.example.com
+    1000010446,server3.example.com
 
 ### `knife rhn systemgroup add GROUP SYSTEM`
 
@@ -65,15 +100,31 @@ Deletes systemgroup GROUP.
 
 Lists inactive systems in system group GROUP.
 
+Example output:
+
+    1000010004,server4.example.com
+    1000017215,server5.example.com
+
 * `--days` - Number of inactive days
 
 ### `knife rhn systemgroup list`
 
 Lists all systemgroups.
 
+Example output:
+
+    Accounting
+    Core Systems
+    Research Computing
+
 ### `knife rhn systemgroup outdated GROUP`
 
 Lists outdated systems in system group GROUP.
+
+Example output:
+
+    1000018560,server2.example.com
+    1000017215,server5.example.com
 
 ### `knife rhn systemgroup remove GROUP SYSTEM`
 
@@ -82,6 +133,14 @@ Removes system SYSTEM from systemgroup GROUP.
 ### `knife rhn systemgroup systems GROUP`
 
 Lists all systems in system group GROUP.
+
+Example output:
+
+    1000010619,server1.example.com
+    1000018560,server2.example.com
+    1000010446,server3.example.com
+    1000010004,server4.example.com
+    1000017215,server5.example.com
 
 ## Contributing
 
