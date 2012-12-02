@@ -6,8 +6,9 @@ A knife plugin for managing RHN.
 
 Uses [rhn_satellite rubygem](https://github.com/duritong/ruby-rhn_satellite) for the backend.
 
-* `gem install knife-rhn`
-* or... clone repo to ~/.chef/plugins/knife or path/to/cheforg/.chef/plugins/knife
+* `gem install knife-rhn` (if using omnibus install, `/opt/chef/embedded/bin/gem install knife-rhn`)
+* or... copy lib files to `~/.chef/plugins/knife`
+* or... copy lib files to `path/to/cheforg/.chef/plugins/knife`
 
 ## Usage
 
