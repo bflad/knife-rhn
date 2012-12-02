@@ -6,22 +6,81 @@ A knife plugin for managing RHN.
 
 Uses `rhn_satellite` rubygem.
 
-* `gem install knife-rhn`
+* `gem install knife-rhn` (once a gem is cut)
 * or... clone repo to ~/.chef/plugins/knife or path/to/cheforg/.chef/plugins/knife
 
 ## Usage
 
-This plugin supports basic RHN operations.
-
 ### Common parameters
 
+Configuration in knife.rb:
+* `knife[:rhn_debug] = true` - Enable debugging for RHN connection
+* `knife[:rhn_hostname] = "HOSTNAME"` - RHN hostname
+* `knife[:rhn_no_https] = true` - Disable HTTPS for RHN connection
+* `knife[:rhn_password] = "PASSWORD"` - RHN password
+* `knife[:rhn_username] = "USERNAME"` - RHN username
+
+Otherwise, from the command line:
+* `--rhn-debug` - Enable debugging for RHN connection
 * `--rhn-hostname HOSTNAME` - RHN hostname
+* `--rhn-no-https` - Disable HTTPS for RHN connection
 * `--rhn-password PASSWORD` - RHN password
 * `--rhn-username USERNAME` - RHN username
 
 ### `knife rhn system delete SYSTEM`
 
 Deletes the system profile for SYSTEM.
+
+### `knife rhn system details SYSTEM`
+
+Displays system details for SYSTEM.
+
+### `knife rhn system move SYSTEM GROUP`
+
+* Removes system SYSTEM from all current systemgroups.
+* Adds system SYSTEM to systemgroup GROUP.
+
+### `knife rhn system systemgroups SYSTEM`
+
+Displays systemgroups for SYSTEM.
+
+### `knife rhn systemgroup active GROUP`
+
+Lists active systems in system group GROUP.
+
+### `knife rhn systemgroup add GROUP SYSTEM`
+
+Adds system SYSTEM to systemgroup GROUP.
+
+### `knife rhn systemgroup create GROUP DESCRIPTION`
+
+Creates systemgroup GROUP with DESCRIPTION.
+
+### `knife rhn systemgroup delete GROUP`
+
+Deletes systemgroup GROUP.
+
+### `knife rhn systemgroup inactive GROUP`
+
+Lists inactive systems in system group GROUP.
+
+* `--days` - Number of inactive days
+
+### `knife rhn systemgroup list`
+
+Lists all systemgroups.
+
+### `knife rhn systemgroup outdated GROUP`
+
+Lists outdated systems in system group GROUP.
+
+### `knife rhn systemgroup remove GROUP SYSTEM`
+
+Removes system SYSTEM from systemgroup GROUP.
+
+### `knife rhn systemgroup systems GROUP`
+
+Lists all systems in system group GROUP.
 
 ## Contributing
 
