@@ -2,6 +2,10 @@
 
 A knife plugin for managing Red Hat Network.
 
+[![Gem Version](https://badge.fury.io/rb/knife-rhn.png)](http://badge.fury.io/rb/knife-rhn)
+&nbsp;
+[![Code Climate](https://codeclimate.com/github/bflad/knife-rhn.png)](https://codeclimate.com/github/bflad/knife-rhn)
+
 ## Installation
 
 Uses [rhn_satellite rubygem](https://github.com/duritong/ruby-rhn_satellite) for the backend.
