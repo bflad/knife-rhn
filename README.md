@@ -147,10 +147,10 @@ Example output:
 Please use standard Github issues and pull requests.
 
 ## License and Author
-      
+
 Author:: Brian Flad (<bflad@wharton.upenn.edu>)
 
-Copyright:: 2012
+Copyright:: 2012-2013
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

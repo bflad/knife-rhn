@@ -3,27 +3,29 @@
 # License:: Apache License, Version 2.0
 #
 
-module RhnKnifePlugin
+require 'chef/knife/rhn_base'
 
-  require 'chef/knife'
+class Chef
+  class Knife
+    class RhnSystemgroupList < Knife
 
-  class RhnSystemgroupList < BaseRhnCommand
+      include Knife::RhnBase
 
-    banner "knife rhn ystemgroup list (options)"
-    category "rhn"
+      banner "knife rhn ystemgroup list (options)"
+      category "rhn"
 
-    get_common_options
+      def run
+        $stdout.sync = true
 
-    def run
+        set_rhn_connection_options
 
-      set_rhn_connection_options
-
-      system_groups = RhnSatellite::Systemgroup.all
-      system_groups.sort! {|a,b| a['name'] <=> b['name']}
-      system_groups.each do |system_group|
-        ui.info "#{system_group['name']}"
+        system_groups = RhnSatellite::Systemgroup.all
+        system_groups.sort! {|a,b| a['name'] <=> b['name']}
+        system_groups.each do |system_group|
+          ui.info "#{system_group['name']}"
+        end
       end
-    end
 
+    end
   end
 end
