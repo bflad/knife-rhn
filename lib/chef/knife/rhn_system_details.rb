@@ -7,7 +7,7 @@ require 'chef/knife/rhn_base'
 
 class Chef
   class Knife
-    class RhnSystemDelete < Knife
+    class RhnSystemDetails < Knife
 
       include Knife::RhnBase
 

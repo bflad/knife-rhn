@@ -11,7 +11,7 @@ class Chef
 
       include Knife::RhnBase
 
-      banner "knife rhn ystemgroup list (options)"
+      banner "knife rhn systemgroup list (options)"
       category "rhn"
 
       def run
