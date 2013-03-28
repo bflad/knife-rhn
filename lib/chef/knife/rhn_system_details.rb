@@ -40,6 +40,8 @@ class Chef
         ui.info "#{ui.color "Description", :cyan}:"
         ui.info "#{details['description']}"
 
+        ui.info "#{ui.color "Last Check-In", :cyan}: #{satellite_system['last_checkin'].to_time}"
+
         base_channel = RhnSatellite::System.subscribed_base_channel(satellite_system['id'])
         child_channels = RhnSatellite::System.subscribed_child_channels(satellite_system['id'])
         ui.info "#{ui.color "Subscribed Channels", :cyan}:"
